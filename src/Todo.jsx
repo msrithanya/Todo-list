@@ -3,11 +3,12 @@ import './Todo.css';
 function Todo() {
   const [valu, setValue] = useState([]);
   const blue=useRef(null);
+  const pink=useRef(null);
   const textColor=useRef(null);
   const add = (num) => {
     const newValu = [...valu, { data: "",color:num}];
     setValue(newValu);
-    localStorage.setItem("value", JSON.stringify(newValu)); // Use the new array
+    localStorage.setItem("value", JSON.stringify(newValu));
   };
 
   const con = (e, i) => {
@@ -33,9 +34,11 @@ function Todo() {
 const colors=()=>{
   if(  blue.current.style.display=="block"){
      blue.current.style.display="none"
+     pink.current.style.display="none"
   }
   else{
   blue.current.style.display="block"
+    pink.current.style.display="block"
   }
 
 }
@@ -43,18 +46,27 @@ const colors=()=>{
     <div>
       <button className='add_button' onClick={colors}>+</button>
       <div ref={blue} onClick={()=>add(1)} className='blue'>
+        
       </div>
+      <div ref={pink} onClick={()=>add(2)} className='pink'>
+      </div>
+      <div className='outer'>
       {valu?.map((v, i) => (
         <div className='container' key={i}>
           <textarea ref={ textColor}
             placeholder="Type something"
             onChange={(e) => con(e, i)}
             value={v.data}
-             style={{ backgroundColor: v.color === 1 ? 'blue' : 'black' }}
+             style={{backgroundColor: v.color === 1 ? 'lightblue' 
+              : v.color === 2 ? 'rgb(246, 226, 229)' 
+              : v.color === 3 ? 'red' 
+              : 'black' }}
           />
           <button onClick={() => dele(i)}>Delete</button>
         </div>
       ))}
+      </div>
+      
     </div>
   );
 }

@@ -7,7 +7,7 @@
     left: 5vw;
 }
 .blue{
-    background-color: blue;
+    background-color: lightblue;
     width: 60px;
     height: 60px;
     position: absolute;
@@ -16,6 +16,25 @@
     border-radius: 30px;
     display: none;
 }
-.container{
-    
+.pink{
+    background-color: rgb(246, 226, 229);
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    left: 5vw;
+    top: 25vh;
+    border-radius: 30px;
+    display: none;
+}
+.outer{
+     border: 1px solid black;
+     margin-left: 15vw;
+     margin-right: 15vw;
+     margin-top: 5vh;
+     display: flex;
+     flex-wrap: wrap;
+}
+.container textarea{
+   height: 20vh;
+   width: 18vw;
 }
