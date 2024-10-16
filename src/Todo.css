@@ -26,15 +26,38 @@
     border-radius: 30px;
     display: none;
 }
+.red{
+    background-color: rgb(233, 122, 139);
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    left: 5vw;
+    top: 35vh;
+    border-radius: 30px;
+    display: none;
+}
 .outer{
-     border: 1px solid black;
      margin-left: 15vw;
      margin-right: 15vw;
      margin-top: 5vh;
      display: flex;
      flex-wrap: wrap;
+    
 }
 .container textarea{
-   height: 20vh;
-   width: 18vw;
+   height: 30vh;
+   width: 22vw;
+   margin-left: 12px;
+}
+.dele{
+    background-color: transparent;
+    border: none;
+}
+.bottom{
+    
+    display: flex;
+    justify-content: space-between;
+ position: relative;
+ bottom: 5vh;
+margin-left: 10px;
 }

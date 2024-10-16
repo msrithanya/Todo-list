@@ -1,12 +1,18 @@
 import React, { useEffect, useState,useRef } from 'react';
 import './Todo.css';
 function Todo() {
+  const currentDate = new Date();
+const year = currentDate.getFullYear();
+const month = currentDate.getMonth() + 1; // Month is zero-based
+const day = currentDate.getDate();
+const da = `${day}/${month}/${year}`
   const [valu, setValue] = useState([]);
   const blue=useRef(null);
   const pink=useRef(null);
+  const red=useRef(null);
   const textColor=useRef(null);
   const add = (num) => {
-    const newValu = [...valu, { data: "",color:num}];
+    const newValu = [...valu, { data: "",color:num,date:da}];
     setValue(newValu);
     localStorage.setItem("value", JSON.stringify(newValu));
   };
@@ -35,10 +41,12 @@ const colors=()=>{
   if(  blue.current.style.display=="block"){
      blue.current.style.display="none"
      pink.current.style.display="none"
+      red.current.style.display="none"
   }
   else{
   blue.current.style.display="block"
     pink.current.style.display="block"
+     red.current.style.display="block"
   }
 
 }
@@ -50,6 +58,8 @@ const colors=()=>{
       </div>
       <div ref={pink} onClick={()=>add(2)} className='pink'>
       </div>
+      <div ref={red} onClick={()=>add(3)} className='red'>
+      </div>
       <div className='outer'>
       {valu?.map((v, i) => (
         <div className='container' key={i}>
@@ -59,10 +69,12 @@ const colors=()=>{
             value={v.data}
              style={{backgroundColor: v.color === 1 ? 'lightblue' 
               : v.color === 2 ? 'rgb(246, 226, 229)' 
-              : v.color === 3 ? 'red' 
+              : v.color === 3 ? 'rgb(233, 122, 139)' 
               : 'black' }}
           />
-          <button onClick={() => dele(i)}>Delete</button>
+          <div className='bottom'><div>{v.date}</div>
+          <button className='dele'onClick={() => dele(i)}><img src='Trash.png'/></button>  
+        </div>
         </div>
       ))}
       </div>
